@@ -14,19 +14,19 @@
 ## 效果总结（summary）
 1.原始图片  
 
-![image]('test.jpg')
+![image](test.jpg)
 
 2.保留10%奇异值
 
-![image]('test_10%25.jpg')
+![image](test_10%25.jpg)
 
 2.保留50%奇异值  
 
-![image]('test_50%25.jpg')  
+![image](test_50%25.jpg)  
 
 2.保留90%奇异值  
 
-![image]('test_90%25.jpg')
+![image](test_90%25.jpg)
 
 
 保留的奇异值越多，图片的特征保留的越明显，当奇异值减少时，图片中的像素间的差距逐渐减小。
