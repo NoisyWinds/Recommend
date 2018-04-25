@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 # 一.基于用户的协同过滤算法简介
 在推荐系统的众多方法之中，基于用户的协同过滤是诞最早的，原理也比较简单。基于协同过滤的推荐算法被广泛的运用在推荐系统中，比如影视推荐、猜你喜欢等、邮件过滤等。该算法1992年提出并用于邮件过滤系统，两年后1994年被 GroupLens 用于新闻过滤。一直到2000年，该算法都是推荐系统领域最著名的算法。
 
@@ -140,3 +139,6 @@ numpy 简化实现皮尔逊相关系数
     def Manhattan(dataA,dataB):
         return np.sum(np.abs(dataA - dataB))
     print(Manhattan(dataA,dataB))
+
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
