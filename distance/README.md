@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 # 一.基于用户的协同过滤算法简介
 在推荐系统的众多方法之中，基于用户的协同过滤是诞最早的，原理也比较简单。基于协同过滤的推荐算法被广泛的运用在推荐系统中，比如影视推荐、猜你喜欢等、邮件过滤等。该算法1992年提出并用于邮件过滤系统，两年后1994年被 GroupLens 用于新闻过滤。一直到2000年，该算法都是推荐系统领域最著名的算法。
 
@@ -21,11 +22,11 @@
 欧式距离全称是欧几里距离，是最易于理解的一种距离计算方式，源自欧式空间中两点间的距离公式。
 平面空间内的  a(x1,y1) 与  b(x2,y2 ) 间的欧式距离：  
 
-$ d = \sqrt{(x1 - x2)^2 + (y1-y2)^2} $  
+$$ d = \sqrt{(x1 - x2)^2 + (y1-y2)^2} $$  
 
 - 三维空间里的欧式距离：  
 
-$ d = \sqrt{(x1 - x2)^2 + (y1-y2)^2+(z1-z2)^2} $  
+$$ d = \sqrt{(x1 - x2)^2 + (y1-y2)^2+(z1-z2)^2} $$  
 
 Python 代码简单实现：
 
@@ -48,7 +49,7 @@ Python 代码简单实现：
 几何意义上的夹角余弦
 夹角越小，余弦值越接近于1，反之则趋于-1。我们假设有x1与x2两个向量：
 
-$ cos(\theta) = \frac{\sum_{k=1}^{n}{x_{1k}}x_{2k}}{\sqrt{\sum_{k=1}^{n}{x_{1k}}^2}\sqrt{\sum_{k=1}^{n}{x_{2k}}^2}} $  
+$$ cos(\theta) = \frac{\sum_{k=1}^{n}{x_{1k}}x_{2k}}{\sqrt{\sum_{k=1}^{n}{x_{1k}}^2}\sqrt{\sum_{k=1}^{n}{x_{2k}}^2}} $$  
 
 Python 代码的简单按公式还原：
 
@@ -88,14 +89,15 @@ Python 代码的简单按公式还原：
 汉明距离表示的是两个字符串（相同长度）对应位不同的数量。比如有两个等长的字符串 str1 = "11111" 和 str2 = "10001" 那么它们之间的汉明距离就是3（这样说就简单多了吧。哈哈）。汉明距离多用于图像像素的匹配（同图搜索）。
 
 Python 的矩阵汉明距离简单运用：
-def hammingDistance(dataA,dataB):
-    distanceArr = dataA - dataB
-    return np.sum(distanceArr == 0)# 若列为向量则为 shape[0]
+
+    def hammingDistance(dataA,dataB):
+        distanceArr = dataA - dataB
+        return np.sum(distanceArr == 0)# 若列为向量则为 shape[0]
 
 ### 4、皮尔逊相关系数（Pearson Correlation Coefficient）
 假如之不先介绍夹角余弦的话，第一次接触你绝对会对皮尔逊相关系数一脸懵逼。那么现在，让我们再来理解一下皮尔逊相关系数的公式：
 
-$ sim(x_1,x_2) = \frac{\sum_{k=1}^{n}{(x_{1k} - \bar{x_1})}(x_{2k} - \bar{x_2})}{\sqrt{\sum_{k=1}^{n}{(x_{1k} - \bar{x_1})}^2}\sqrt{\sum_{k=1}^{n}{(x_{2k} - \bar{x_2})}^2}} $
+$$ sim(x_1,x_2) = \frac{\sum_{k=1}^{n}{(x_{1k} - \bar{x_1})}(x_{2k} - \bar{x_2})}{\sqrt{\sum_{k=1}^{n}{(x_{1k} - \bar{x_1})}^2}\sqrt{\sum_{k=1}^{n}{(x_{2k} - \bar{x_2})}^2}} $$
 
 皮尔逊相关系数公式实际上就是在计算夹角余弦之前将两个向量减去各个样本的平均值，达到中心化的目的。从知友的回答可以明白，皮尔逊相关函数是余弦相似度在维度缺失上面的一种改进方法。
 
