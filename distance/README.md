@@ -11,11 +11,12 @@
 ## 二、常用的相似度计算方法
 下面，简单的举例几个机器学习中常用的样本相似性度量方法：
 
- - 欧式距离（Euclidean Distance）
- - 夹角余弦（Cosine）
- - 汉明距离（Hamming distance） 
- - 皮尔逊相关系数（Pearson）
- - 曼哈顿距离（Manhattan Distance）
+- 欧式距离（Euclidean Distance）
+- 余弦相似度（Cosine）
+- 皮尔逊相关系数（Pearson）
+- 修正余弦相似度（Adjusted Cosine）
+- 汉明距离（Hamming Distance）
+- 曼哈顿距离（Manhattan Distance）
  
 ### 1、 欧式距离（Euclidean Distance）
 欧式距离全称是欧几里距离，是最易于理解的一种距离计算方式，源自欧式空间中两点间的距离公式。
@@ -136,7 +137,35 @@ numpy 简化实现皮尔逊相关系数
         # 皮尔逊相关系数的取值范围(-1 ~ 1),0.5 + 0.5 * result 归一化(0 ~ 1)
         return 0.5 + 0.5 * np.corrcoef(dataA,dataB,rowvar = 0)[0][1]
 
-### 5.曼哈顿距离（Manhattan Distance）
+用余弦相似度相同的方法实现皮尔逊
+
+    # 余弦相似度、修正余弦相似度、皮尔逊相关系数的关系
+    # Pearson 减去的是每个item i 的被打分的均值
+    def Pearson(dataA,dataB):
+        avgA = np.mean(dataA)
+        avgB = np.mean(dataB)
+        sumData = (dataA - avgA) * (dataB - avgB).T # 若列为向量则为 dataA.T * dataB
+        denom = np.linalg.norm(dataA - avgA) * np.linalg.norm(dataB - avgB)
+        # 归一化
+        return 0.5 + 0.5 * (sumData / denom)
+  
+### 5.修正余弦相似度
+#### 1. 为什么需要在余弦相似度的基础上使用修正余弦相似度
+> X和Y两个用户对两个内容的评分分别为（1,2）和（4,5），使用余弦相似度得到的结果是0.98，两者极为相似。但从评分上看X似乎不喜欢2这个 内容，而Y则比较喜欢，余弦相似度对数值的不敏感导致了结果的误差，需要修正这种不合理性  
+
+    # 修正余弦相似度
+    # 修正cosine 减去的是对item i打过分的每个user u，其打分的均值
+    dataA = np.mat([[1,2,3],[2,3,4]])
+    dataB = np.mat([[1,2,3],[3,3,3]])
+    avgA = np.mean(dataA[:,0]) # 下标0表示正在打分的用户
+    avgB = np.mean(dataB[:,0])
+    def AdjustedCosine(dataA,dataB,avgA,avgB):
+        sumData = (dataA - avgA) * (dataB - avgB).T # 若列为向量则为 dataA.T * dataB
+        denom = np.linalg.norm(dataA - avgA) * np.linalg.norm(dataB - avgB)
+        return 0.5 + 0.5 * (sumData / denom)
+    # 为第一个物品打分
+    print(AdjustedCosine(dataA[0,:],dataB[0,:],avgA,avgB))
+### 6.曼哈顿距离（Manhattan Distance）
 没错，你也是会曼哈顿计量法的人了，现在开始你和秦风只差一张刘昊然的脸了。想象你在曼哈顿要从一个十字路口开车到另外一个十字路口，那么驾驶的最近距离并不是直线距离，因为你不可能横穿房屋。所以，曼哈顿距离表示的就是你的实际驾驶距离，即两个点在标准坐标系上的绝对轴距总和。  
 
 ![img](image/6.jpg)  
