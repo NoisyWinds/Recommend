@@ -11,7 +11,7 @@
 ## 二、SVD 理论简介
 假设 M 是一个 m*n 阶的样本矩阵，其中的元素全部属于域 K，那么矩阵分解可得：
 <br>
-![image](images/1.jpg)
+![image](images/1.png)
 <br>
 也可以描述成： U（m*m），sigma（m*n），VT（n*n）
 
@@ -23,7 +23,7 @@
 <br>
 ![image](image_denoising/test.jpg)
 <br>
-![image](image_denoising/test_50%.jpg)
+![image](image_denoising/test_70%25.jpg)
 <br>
 保留的奇异值越多，图片的特征保留的越明显，当奇异值减少时，图片中的像素间的差距逐渐减小（表现的模糊）。
 
@@ -37,27 +37,39 @@
 
 矩阵 M 经过Funk SVD 分解之后：
 <br>
+<br>
 ![image](images/2.png)
+<br>
 <br>
 对于某一个用户的评分使用 Funk SVD 进行矩阵分解得到的结果就是：
 <br>
+<br>
 ![image](images/3.png)
+<br>
 <br>
 那么我们需要最小化的损失函数就是：
 <br>
+<br>
 ![image](images/4.png)
+<br>
 <br>
 损失就是：
 <br>
+<br>
 ![image](images/5.png)
+<br>
 <br>
 使用随机梯度下降调参：
 <br>
+<br>
 ![image](images/6.png)
+<br>
 <br>
 还有一种情况就是，抛弃biased，也就是：
 <br>
+<br>
 ![image](images/7.png)
+<br>
 <br>
 这就相当于是概率矩阵分解。
 
