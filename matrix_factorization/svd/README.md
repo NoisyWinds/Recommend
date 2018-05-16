@@ -11,7 +11,9 @@
 ## 二、SVD 理论简介
 假设 M 是一个 m*n 阶的样本矩阵，其中的元素全部属于域 K，那么矩阵分解可得：
 <br>
+<br>
 ![image](images/1.png)
+<br>
 <br>
 也可以描述成： U（m*m），sigma（m*n），VT（n*n）
 
