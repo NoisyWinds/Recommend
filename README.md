@@ -5,7 +5,7 @@
 
 ## 2018.05.16 update
 - 矩阵奇异值分解（SVD）
-- - [算法解析]('/maxtrix_factorization/svd')
-- - [图片降噪]('/maxtrix_factorization/svd/image_denoising')
-- - [Funk-SVD]('/maxtrix_factorization/svd/svd.pyx')
+    - [算法解析](maxtrix_factorization/svd)
+    - [图片降噪](maxtrix_factorization/svd/image_denoising)
+    - [Funk-SVD](maxtrix_factorization/svd/svd.pyx)
 
